@@ -6,10 +6,12 @@ import Home from './pages/Home'
 import Article from './pages/Article'
 import Favourites from './pages/Favourites'
 import PageNotFound from './pages/PageNotFound'
-
+import Menu from './components/Menu'
 
 export default function App({ img="sampleLogo.png" }) {
-    const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 })
+    const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 });
+    const [openMenu, setOpenMenu] = useState(false);
+
     useEffect(() => {
         const setResponsiveness = () => {
           return window.innerWidth < 900 
@@ -25,19 +27,30 @@ export default function App({ img="sampleLogo.png" }) {
         }
       }, [])
 
+    const toggleMenu = () => {
+      setOpenMenu(!openMenu)
+    }
+
+    useEffect(() => {
+      if (openMenu) document.body.style.overflow = 'hidden'
+      if (!openMenu) document.body.style.overflow = 'unset'
+    }, [openMenu])
+    
+    console.log(openMenu)
     return(
       <Router>
         <div className="container">
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100vw'}}>
-            {isMobile.mobile && (
-              <label style={{position: 'fixed', top: 10, left: 10, display: 'flex', justifyContent: 'center'}}>
-                <FaAlignJustify size={ isMobile.innerWidth < 900 ? 35 : 25 } style={{ alignSelf: 'flex-start' }} />
-              </label>
-            )}
-            <label style={{width: '20vw', display: 'flex', justifyContent: 'center'}}/>
-            <img alt="logo" src={ img } className="logo" />
-            <div style={{width: '20vw'}} />
+              {isMobile.mobile && (
+                <label style={{position: 'fixed', top: 10, left: 10, zIndex: 100, display: 'flex', justifyContent: 'center'}} onClick={() => toggleMenu()}>
+                  <FaAlignJustify size={ isMobile.innerWidth < 900 ? 35 : 25 } style={{ alignSelf: 'flex-start' }} />
+                </label>
+              )}
+              <label style={{width: '20vw', display: 'flex', justifyContent: 'center'}}/>
+              <img alt="logo" src={ img } className="logo" />
+              <div style={{width: '20vw'}} />
             </div>
+            {openMenu && <Menu />}
             <div className="navbar">
                 <Link to="/favourites" style={{color: 'black', textDecoration: 'none'}}>
                   <Label title="Favourites" />

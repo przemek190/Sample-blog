@@ -3,6 +3,7 @@ import '../styles/App.css'
 
 export default function Article() {
     const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 })
+    
     useEffect(() => {
         const setResponsiveness = () => {
           return window.innerWidth < 900 

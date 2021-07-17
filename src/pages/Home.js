@@ -5,31 +5,25 @@ import { useHistory } from 'react-router-dom'
 
 export default function Home() {
   const [articles, setArticles] = useState([])
-  const [albums, setAlbums] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [pages, setPages] = useState(1)
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     async function getData() {
-    await fetch('https://jsonplaceholder.typicode.com/photos/')
+    await fetch('https://jsonplaceholder.typicode.com/posts/')
       .then(response => response.json())
       .then(data => setArticles(data))
-    await fetch('https://jsonplaceholder.typicode.com/photos/')
-      .then(response => response.json())
-      .then(data => setAlbums(data))
     }
     getData()
   }, [])
 
-  const getNumOfPages = (elements) => {
-    setPages(Math.ceil(elements.length / 4))
-  }
-
   useEffect(() => { 
+    const getNumOfPages = (elements) => {
+      setPages(Math.ceil(elements.length / 4))
+    }
+
     getNumOfPages(articles)
-    if (articles.length > 0) setIsLoading(false)
-    else setIsLoading(true)
   }, [articles])
 
   const handlePageChange = ({ selected: selectedPage }) => {
@@ -38,11 +32,11 @@ export default function Home() {
 
   return (
     <>
-      <main className="main">
-        <div className="articles_container">
+      <main className="home_main">
+        <div className="home_articles_container">
           {articles.length > 0 ? (
             articles.map(data => {
-              return <Article data={ data } page={ currentPage } />
+              return <Article key={data.id} data={ data } page={ currentPage } />
             })
           ) : (
             <div>
@@ -57,13 +51,13 @@ export default function Home() {
           pageCount={pages}
           marginPagesDisplayed={1}
           pageRangeDisplayed={2}
-          containerClassName="pagination_container"
-          activeClassName="pagination_active"
-          disabledClassName="pagination_disabled"
-          nextLinkClassName="pagination_next"
-          previousClassName="pagination_previous"
-          pageClassName="pagination_page"
-          breakClassName="pagination_break"
+          containerClassName="home_pagination_container"
+          activeClassName="home_pagination_active"
+          disabledClassName="home_pagination_disabled"
+          nextLinkClassName="home_pagination_next"
+          previousClassName="home_pagination_previous"
+          pageClassName="home_pagination_page"
+          breakClassName="home_pagination_break"
           onPageChange={handlePageChange} 
           />
     </>
@@ -75,11 +69,11 @@ export function Article({ data, page }) {
   let history = useHistory();
 
   return(
-    <React.Fragment key={id}>
+    <React.Fragment>
       {(id > ((page - 1) * 4) && id <= (page * 4)) && (
-        <div key={id} className="article_container">
-          <p className="article_title">{title}</p>
-          <button type="button" className="article_button" onClick={() => history.push('/article')}>
+        <div key={id} className="home_article_container">
+          <p className="home_article_title">{title}</p>
+          <button type="button" className="home_article_button" onClick={() => history.push({pathname: '/article', state: data})}>
             Czytaj więcej
           </button>
         </div>

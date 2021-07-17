@@ -1,0 +1,35 @@
+.menu_backdrop {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.75);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu_container {
+    width: 40vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 1);
+    z-index: 2;
+    box-shadow: 0 0 1.5vw gray;
+}
+
+.menu_text_container {
+    padding-left: 1.5vh;
+    margin-top: 80px;
+    padding-block: 1vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh
+}
+
+.menu_button {
+    background-color: transparent;
+    border: 0;
+    text-align: left;
+    font-size: 2vh;
+}
