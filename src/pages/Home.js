@@ -4,10 +4,26 @@ import ReactPaginate from 'react-paginate'
 import { useHistory } from 'react-router-dom'
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 })
   const [articles, setArticles] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [pages, setPages] = useState(1)
   const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    const setResponsiveness = () => {
+      return window.innerWidth < 900 
+        ? setIsMobile({ mobile: true, innerWidth: window.innerWidth })
+        : setIsMobile({ mobile: false, innerWidth: window.innerWidth })
+    };
+
+    setResponsiveness();
+    window.addEventListener("resize", () => setResponsiveness());
+
+    return () => {
+      window.removeEventListener("resize", () => setResponsiveness());
+    }
+  }, [])
 
   useEffect(() => {
     async function getData() {
@@ -53,11 +69,11 @@ export default function Home() {
           pageRangeDisplayed={2}
           containerClassName="home_pagination_container"
           activeClassName="home_pagination_active"
-          disabledClassName="home_pagination_disabled"
-          nextLinkClassName="home_pagination_next"
-          previousClassName="home_pagination_previous"
+          disabledClassName="home_pagination"
+          nextLinkClassName="home_pagination_page"
+          previousClassName="home_pagination_page"
           pageClassName="home_pagination_page"
-          breakClassName="home_pagination_break"
+          breakClassName="home_pagination"
           onPageChange={handlePageChange} 
           />
     </>

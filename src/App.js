@@ -40,9 +40,9 @@ export default function App({ img="sampleLogo.png" }) {
     return(
       <Router>
         <div className="container">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100vw'}}>
+            <div className="logo_container">
               {isMobile.mobile && (
-                <label style={{position: 'fixed', top: 10, left: 10, zIndex: 100, display: 'flex', justifyContent: 'center'}} onClick={() => toggleMenu()}>
+                <label className="menu_button" onClick={() => toggleMenu()}>
                   <FaAlignJustify size={ isMobile.innerWidth < 900 ? 35 : 25 } style={{ alignSelf: 'flex-start' }} />
                 </label>
               )}

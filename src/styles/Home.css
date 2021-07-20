@@ -1,8 +1,13 @@
 .home_main {
+  width: 100%;
   padding: 2vw 0;
+  display: flex;
+  justify-content: center;
 }
 
 .home_articles_container {
+  width: 95%;
+  max-width: 1920px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,7 +17,7 @@
 }
 
 .home_article_container {
-  flex: 0 46%;
+  flex: 0 45%;
   display: flex;
   flex-direction: column;
   height: 20vh;
@@ -25,17 +30,21 @@
 
 .home_article_title {
   font-size: 1.5vh;
-  text-align: center
+  text-align: center;
 }
 
 .home_article_button {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
   height: 3vh;
   cursor: pointer;
   border-radius: 5vw;
-  background-color: white;
+  background-color: transparent;
   box-shadow: 0 0 0.5vw gray;
-  border-width: 0;
-  margin-inline: 10vw;
+  border-width: 0px;
   margin-bottom: 1vh;
   font-size: 1vh;
 }
@@ -45,94 +54,48 @@
 }
 
 .home_pagination_container {
-  width: 100vw;
+  width: 80%;
+  max-width: 800px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   list-style-type: none;
   padding-top: 1vh;
   padding-bottom: 2vh;
-  padding-left: 0px;
-}
-
-.home_pagination_active {
-  color: darkgray;
-}
-
-.home_pagination_disabled {
-  color: darkgray;
-}
-
-.home_pagination_next {
+  padding-inline: 0px;
   font-size: 1vh;
-  padding-inline: 1vw;
 }
 
-.home_pagination_next:hover {
+.home_pagination {
   color: darkgray;
-  cursor: pointer;
-}
-
-.home_pagination_previous {
-  font-size: 1vh;
-  padding-inline: 1vw;
-}
-
-.home_pagination_previous:hover {
-  color: darkgray;
-  cursor: pointer;
 }
 
 .home_pagination_page {
-  margin-left: 1.8vw;
-  margin-right: 1.8vw;
-  font-size: 1vh;
+  color: black
 }
 
-.home_pagination_page:hover {
-  color: gray;
-  cursor: pointer;
-}
-
-.home_pagination_break {
-  font-size: 1vh;
-}
-
-.home_pagination_break:hover {
-  cursor: pointer;
+.home_pagination_active {
   color: darkgray
 }
 
+.home_pagination:hover {
+  color: darkgray;
+  cursor: pointer;
+}
+
+.home_pagination_page:hover {
+  color: darkgray;
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
-  .home_grid {
+  .home_articles_container {
     width: 100%;
     flex-direction: column;
   }
 
-  .home_main {
-    padding: 0px
-  }
-
-  .home_articles_container {
-    padding-inline: 4vw;
-  }
-
   .home_article_container {
-    flex: 0 100%;
-    height: 30vh;
-  }
-}
-
-@media (max-width: 900px) {
-  .home_main {
-    padding: 0px
-  }
-}
-
-@media (min-width: 2500px) {
-  .home_articles_container {
-    padding-inline: 9vw;
-  }
-  .home_article_container { 
-    flex: 0 40%;
+    width: 85%;
+    min-height: 20vh;
+    
   }
 }
