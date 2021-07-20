@@ -36,7 +36,6 @@ export default function App({ img="sampleLogo.png" }) {
       if (!openMenu) document.body.style.overflow = 'unset'
     }, [openMenu])
     
-    console.log(openMenu)
     return(
       <Router>
         <div className="container">

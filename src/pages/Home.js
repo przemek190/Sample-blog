@@ -2,28 +2,14 @@ import React, { useState, useEffect } from 'react'
 import '../styles/Home.css'
 import ReactPaginate from 'react-paginate'
 import { useHistory } from 'react-router-dom'
+import FavouriteArticle from '../app/favouritesArticles/components/FavouriteArticle'
 
 export default function Home() {
-  const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 })
   const [articles, setArticles] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [pages, setPages] = useState(1)
   const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
-    const setResponsiveness = () => {
-      return window.innerWidth < 900 
-        ? setIsMobile({ mobile: true, innerWidth: window.innerWidth })
-        : setIsMobile({ mobile: false, innerWidth: window.innerWidth })
-    };
-
-    setResponsiveness();
-    window.addEventListener("resize", () => setResponsiveness());
-
-    return () => {
-      window.removeEventListener("resize", () => setResponsiveness());
-    }
-  }, [])
+  // in the future migrate fetch to other file and connet API with Redux (redux-thunk)
 
   useEffect(() => {
     async function getData() {
@@ -35,7 +21,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => { 
-    const getNumOfPages = (elements) => {
+    const getNumOfPages = ( elements ) => {
       setPages(Math.ceil(elements.length / 4))
     }
 
@@ -52,7 +38,7 @@ export default function Home() {
         <div className="home_articles_container">
           {articles.length > 0 ? (
             articles.map(data => {
-              return <Article key={data.id} data={ data } page={ currentPage } />
+              return <Article key={ data.id } data={ data } page={ currentPage } />
             })
           ) : (
             <div>
@@ -64,7 +50,7 @@ export default function Home() {
       <ReactPaginate 
           previousLabel={"← Previous"} 
           nextLabel={"Next →"}
-          pageCount={pages}
+          pageCount={ pages }
           marginPagesDisplayed={1}
           pageRangeDisplayed={2}
           containerClassName="home_pagination_container"
@@ -74,20 +60,22 @@ export default function Home() {
           previousClassName="home_pagination_page"
           pageClassName="home_pagination_page"
           breakClassName="home_pagination"
-          onPageChange={handlePageChange} 
+          onPageChange={ handlePageChange } 
           />
     </>
   )
 }
 
+// later this component will move to components dir
 export function Article({ data, page }) {
-  const { body, id, title, userId } = data;
+  const { id, title } = data;
   let history = useHistory();
 
   return(
     <React.Fragment>
       {(id > ((page - 1) * 4) && id <= (page * 4)) && (
         <div key={id} className="home_article_container">
+          <FavouriteArticle data={data} className="home_comment_favourite" size={30} />
           <p className="home_article_title">{title}</p>
           <button type="button" className="home_article_button" onClick={() => history.push({pathname: '/article', state: data})}>
             Czytaj więcej

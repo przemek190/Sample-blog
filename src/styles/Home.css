@@ -53,6 +53,18 @@
   background-color: lightgray;
 }
 
+.home_comment_favourite {
+  align-self: flex-end;
+  margin-right: 1vw;
+  margin-top: 1vw;
+}
+
+.home_comment_favourite:hover {
+  cursor: pointer;
+  color: gold
+}
+
+
 .home_pagination_container {
   width: 80%;
   max-width: 800px;

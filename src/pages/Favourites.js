@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+// in the future add the craco to shorten the path
+import FavouritesContainer from '../app/favouritesArticles/components/FavouritesContainer'
 import '../styles/App.css'
 
-export default function Article() {
-    const [isMobile, setIsMobile] = useState({ mobile: false, innerWidth: 0 })
-    
-    useEffect(() => {
-        const setResponsiveness = () => {
-          return window.innerWidth < 900 
-            ? setIsMobile({ mobile: true, innerWidth: window.innerWidth })
-            : setIsMobile({ mobile: false, innerWidth: window.innerWidth })
-        };
-    
-        setResponsiveness();
-        window.addEventListener("resize", () => setResponsiveness());
-    
-        return () => {
-          window.removeEventListener("resize", () => setResponsiveness());
-        }
-      }, [])
-
+// Incorret displaying articles, to improve
+// In the future create posibility to add comments to favourites
+export default function Favourites() {
     return(
         <div className="container">
-            <p>Favourites</p>
+            <FavouritesContainer />
         </div>
     )
 }

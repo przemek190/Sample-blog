@@ -6,10 +6,6 @@
     align-items: center;
 }
 
-.article_content_container {
-    
-}
-
 .article_title {
     font-size: 2.2vh;
     font-weight: 400;
@@ -57,6 +53,11 @@
 
 .article_comment_counter {
     font-size: 1.5vh;
+}
+
+.article_comment_favourite:hover {
+    cursor: pointer;
+    color: gold
 }
 
 .article_comment_name {
