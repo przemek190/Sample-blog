@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
 import { connect } from 'react-redux'
 import '../../../styles/Home.css'
-import { Article } from '../../../pages/Home'
+import Article from '../../../components/Article'
 
 // duplicate code with home, to correct
 
@@ -31,11 +31,7 @@ const FavouritesContainer = ( props ) => {
                 articles.map((data, index) => {
                 return <Article key={ index } data={ data } page={ currentPage } />
                 })
-            ) : (
-                <div>
-                <p>You don't have any favourites articles</p>
-                </div>
-            )}
+            ) : <p>You don't have any favourites articles</p>}
             </div>
             {articles.length > 0 &&             
             <ReactPaginate 

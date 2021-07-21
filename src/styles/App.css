@@ -17,7 +17,7 @@
     width: 30%;
     max-width: 220px;
     border-radius: 50vw;
-    box-shadow: 0 0 0.5vw gray;
+    box-shadow: 0 0 15px gray;
 }
 
 .menu_button {

@@ -25,7 +25,7 @@
   margin-block: 2vh;
   justify-content: space-between;
   border-radius: 1.5vw;
-  box-shadow: 0 0 0.5vw gray;
+  box-shadow: 0 0 12px gray;
 }
 
 .home_article_title {
@@ -43,7 +43,7 @@
   cursor: pointer;
   border-radius: 5vw;
   background-color: transparent;
-  box-shadow: 0 0 0.5vw gray;
+  box-shadow: 0 0 10px gray;
   border-width: 0px;
   margin-bottom: 1vh;
   font-size: 1vh;
@@ -62,41 +62,6 @@
 .home_comment_favourite:hover {
   cursor: pointer;
   color: gold
-}
-
-
-.home_pagination_container {
-  width: 80%;
-  max-width: 800px;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  padding-top: 1vh;
-  padding-bottom: 2vh;
-  padding-inline: 0px;
-  font-size: 1vh;
-}
-
-.home_pagination {
-  color: darkgray;
-}
-
-.home_pagination_page {
-  color: black
-}
-
-.home_pagination_active {
-  color: darkgray
-}
-
-.home_pagination:hover {
-  color: darkgray;
-  cursor: pointer;
-}
-
-.home_pagination_page:hover {
-  color: darkgray;
-  cursor: pointer;
 }
 
 @media (max-width: 600px) {

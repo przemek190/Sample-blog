@@ -1,0 +1,33 @@
+.home_pagination_container {
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+    padding-inline: 0px;
+    font-size: 1vh;
+  }
+  
+  .home_pagination {
+    color: darkgray;
+  }
+  
+  .home_pagination_page {
+    color: black
+  }
+  
+  .home_pagination_active {
+    color: darkgray
+  }
+  
+  .home_pagination:hover {
+    color: darkgray;
+    cursor: pointer;
+  }
+  
+  .home_pagination_page:hover {
+    color: darkgray;
+    cursor: pointer;
+  }
